@@ -1,0 +1,32 @@
+{
+    "id": "454B1385",
+    "path": "~/GitHub/minority-businesses/index.qmd",
+    "project_path": "index.qmd",
+    "type": "quarto_markdown",
+    "hash": "318511565",
+    "contents": "",
+    "dirty": false,
+    "created": 1702929527399.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "52,0",
+        "scrollLine": "23",
+        "last_setup_crc32": "9706205e392e2fa7",
+        "rmdVisualMode": "false",
+        "rmdVisualWrapConfigured": "true",
+        "docOutlineVisible": "1",
+        "rmdVisualCollapsedChunks": "",
+        "rmdVisualModeLocation": "7090:6004.7998046875"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1704836504,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1704836504216,
+    "read_only": false,
+    "read_only_alternatives": []
+}

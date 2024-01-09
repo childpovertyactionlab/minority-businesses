@@ -1,0 +1,13 @@
+"2","r error 4 (Error in regmatches(line, regexec(.rs.reYamlOptChunkBegin(), line)) : 
+  R_Reprotect: only 4 protected items, can't reprotect index -1
+)"
+"2","Error in which(search() == "".conflicts"") : 
+  R_Reprotect: only 3 protected items, can't reprotect index -2
+"
+"1","
+Restarting R session...
+
+"
+"2","Error in clienv$unloaded <- TRUE : 
+  R_Reprotect: only 1 protected item, can't reprotect index -1
+"

@@ -1,0 +1,25 @@
+"0","leaflet(data = df) %>%
+  addProviderTiles(""CartoDB.Positron"") %>%
+  addPolygons(fillColor = ~life_exp_pal(life_exp),
+              fillOpacity = 0.7, weight = 1,
+              color = ""white"", dashArray = ""3"",
+              label = ~paste0(""Life expectancy: "", scales::number(life_exp, accuracy = 0.1), "" years""),
+              labelOptions = labelOptions(direction = 'auto', html = TRUE)) %>%
+  addLegend(""bottomright"", 
+            colors = life_exp_colors,
+            labels = life_exp_labs,
+            title = ""Life Expectancy (years)"",
+            opacity = 1) %>%
+  addPolygons(
+    data = dallas,
+    fillColor = ""#333333"",
+    fillOpacity = 0.1, weight = 2, color = ""#333333"",
+    smoothFactor = 1,
+    options = pathOptions(clickable = F, interactive = F)
+  ) %>%
+  setMaxBounds(bounds[1], bounds[2], bounds[3], bounds[4])
+"
+"2","Warning: sf layer has inconsistent datum (+proj=longlat +datum=NAD83 +no_defs).
+Need '+proj=longlat +datum=WGS84'"
+"2","Warning: sf layer has inconsistent datum (+proj=longlat +datum=NAD83 +no_defs).
+Need '+proj=longlat +datum=WGS84'"

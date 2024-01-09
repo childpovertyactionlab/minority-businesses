@@ -1,0 +1,512 @@
+addTiles(urlTemplate = cpaltemplates::cpal_mapbox, attribution = cpaltemplates::cpal_leaflet) %>%
+addPolygons(
+data = dallas_co,
+fillColor = "#333333",
+fillOpacity = 0.05, weight = 2, color = "#333333",
+smoothFactor = 1,
+options = pathOptions(clickable = F, interactive = F)
+)
+for(i in seq_along(unique(vendors$HUB))) {
+hub <- unique(vendors$HUB)[i]
+m <- m %>%
+addCircleMarkers(
+data = vendors %>% filter(HUB == hub),
+group = hub,
+radius = 5,
+stroke = FALSE,
+color = cpaltemplates::palette_cpal_main[i],
+fillOpacity = 0.7,
+clusterOptions = markerClusterOptions(
+maxClusterRadius = 60,
+disableClusteringAtZoom = 12
+)
+)
+}
+m <- m %>%
+addLegend(
+"bottomright",
+pal = colorFactor(cpaltemplates::palette_cpal_main, unique(vendors$HUB), na.color=NULL),
+values = ~HUB,
+title = "HUB Eligibility",
+opacity = 0.7
+) %>%
+addLayersControl(
+overlayGroups = unique(vendors$HUB),
+position = "bottomleft",
+options = layersControlOptions(collapsed = FALSE)
+) %>%
+setMaxBounds(expanded_bounds[1], expanded_bounds[2], expanded_bounds[3], expanded_bounds[4])
+m
+unique(vendors$HUB)
+m <- leaflet(data = vendors) %>%
+addTiles(urlTemplate = cpaltemplates::cpal_mapbox, attribution = cpaltemplates::cpal_leaflet) %>%
+addPolygons(
+data = dallas_co,
+fillColor = "#333333",
+fillOpacity = 0.05, weight = 2, color = "#333333",
+smoothFactor = 1,
+options = pathOptions(clickable = F, interactive = F)
+)
+for(i in seq_along(levels(vendors$HUB))) {
+hub <- levels(vendors$HUB)[i]
+m <- m %>%
+addCircleMarkers(
+data = vendors %>% filter(HUB == hub),
+group = hub,
+radius = 5,
+stroke = FALSE,
+color = cpaltemplates::palette_cpal_main[i],
+fillOpacity = 0.7,
+clusterOptions = markerClusterOptions(
+maxClusterRadius = 60,
+disableClusteringAtZoom = 12
+)
+)
+}
+m <- m %>%
+addLegend(
+"bottomright",
+pal = colorFactor(cpaltemplates::palette_cpal_main, levels(vendors$HUB), na.color=NULL),
+values = ~HUB,
+title = "HUB Eligibility",
+opacity = 0.7
+) %>%
+addLayersControl(
+overlayGroups = levels(vendors$HUB),
+position = "bottomleft",
+options = layersControlOptions(collapsed = FALSE)
+) %>%
+setMaxBounds(expanded_bounds[1], expanded_bounds[2], expanded_bounds[3], expanded_bounds[4])
+m
+m <- leaflet(data = vendors) %>%
+addTiles(urlTemplate = cpaltemplates::cpal_mapbox, attribution = cpaltemplates::cpal_leaflet) %>%
+addPolygons(
+data = dallas_co,
+fillColor = "#333333",
+fillOpacity = 0.05, weight = 2, color = "#333333",
+smoothFactor = 1,
+options = pathOptions(clickable = F, interactive = F)
+)
+for(i in seq_along(levels(vendors$HUB))) {
+hub <- levels(vendors$HUB)[i]
+m <- m %>%
+addCircleMarkers(
+data = vendors %>% filter(HUB == hub),
+group = hub,
+radius = 5,
+stroke = FALSE,
+color = cpaltemplates::palette_cpal_main[i],
+fillOpacity = 0.7,
+clusterOptions = markerClusterOptions(
+maxClusterRadius = 60,
+disableClusteringAtZoom = 12
+)
+)
+}
+m <- m %>%
+addLegend(
+"bottomright",
+pal = colorFactor(cpaltemplates::palette_cpal_main, unique(vendors$HUB), na.color=NULL),
+values = ~HUB,
+title = "HUB Eligibility",
+opacity = 0.7
+) %>%
+addLayersControl(
+overlayGroups = levels(vendors$HUB),
+position = "bottomleft",
+options = layersControlOptions(collapsed = FALSE)
+) %>%
+setMaxBounds(expanded_bounds[1], expanded_bounds[2], expanded_bounds[3], expanded_bounds[4])
+m
+cpaltemplates::palette_cpal_main
+levels(vendors$HUB)
+levels(vendors$HUB)[1]
+levels(vendors$HUB)[2]
+seq_along(levels(vendors$HUB))
+m <- leaflet(data = vendors) %>%
+addTiles(urlTemplate = cpaltemplates::cpal_mapbox, attribution = cpaltemplates::cpal_leaflet) %>%
+addPolygons(
+data = dallas_co,
+fillColor = "#333333",
+fillOpacity = 0.05, weight = 2, color = "#333333",
+smoothFactor = 1,
+options = pathOptions(clickable = F, interactive = F)
+)
+for(i in seq_along(levels(vendors$HUB))) {
+hub <- levels(vendors$HUB)[i]
+m <- m %>%
+addCircleMarkers(
+data = vendors %>% filter(HUB == hub),
+group = hub,
+radius = 5,
+stroke = FALSE,
+color = cpaltemplates::palette_cpal_main[i],
+fillOpacity = 0.7,
+clusterOptions = markerClusterOptions(
+maxClusterRadius = 60,
+disableClusteringAtZoom = 12
+)
+)
+}
+m <- m %>%
+addLegend(
+"bottomright",
+pal = ~colorFactor(cpaltemplates::palette_cpal_main, HUB, na.color=NULL),
+values = ~HUB,
+title = "HUB Eligibility",
+opacity = 0.7
+) %>%
+addLayersControl(
+overlayGroups = levels(vendors$HUB),
+position = "bottomleft",
+options = layersControlOptions(collapsed = FALSE)
+) %>%
+setMaxBounds(expanded_bounds[1], expanded_bounds[2], expanded_bounds[3], expanded_bounds[4])
+m <- leaflet(data = vendors) %>%
+addTiles(urlTemplate = cpaltemplates::cpal_mapbox, attribution = cpaltemplates::cpal_leaflet) %>%
+addPolygons(
+data = dallas_co,
+fillColor = "#333333",
+fillOpacity = 0.05, weight = 2, color = "#333333",
+smoothFactor = 1,
+options = pathOptions(clickable = F, interactive = F)
+)
+for(i in seq_along(levels(vendors$HUB))) {
+hub <- levels(vendors$HUB)[i]
+m <- m %>%
+addCircleMarkers(
+data = vendors %>% filter(HUB == hub),
+group = hub,
+radius = 5,
+stroke = FALSE,
+color = cpaltemplates::palette_cpal_main[i],
+fillOpacity = 0.7,
+clusterOptions = markerClusterOptions(
+maxClusterRadius = 60,
+disableClusteringAtZoom = 12
+)
+)
+}
+m <- m %>%
+addLegend(
+"bottomright",
+pal = cpaltemplates::palette_cpal_main,
+values = ~HUB,
+title = "HUB Eligibility",
+opacity = 0.7
+) %>%
+addLayersControl(
+overlayGroups = levels(vendors$HUB),
+position = "bottomleft",
+options = layersControlOptions(collapsed = FALSE)
+) %>%
+setMaxBounds(expanded_bounds[1], expanded_bounds[2], expanded_bounds[3], expanded_bounds[4])
+m <- leaflet(data = vendors) %>%
+addTiles(urlTemplate = cpaltemplates::cpal_mapbox, attribution = cpaltemplates::cpal_leaflet) %>%
+addPolygons(
+data = dallas_co,
+fillColor = "#333333",
+fillOpacity = 0.05, weight = 2, color = "#333333",
+smoothFactor = 1,
+options = pathOptions(clickable = F, interactive = F)
+)
+for(i in seq_along(levels(vendors$HUB))) {
+hub <- levels(vendors$HUB)[i]
+m <- m %>%
+addCircleMarkers(
+data = vendors %>% filter(HUB == hub),
+group = hub,
+radius = 5,
+stroke = FALSE,
+color = cpaltemplates::palette_cpal_main[i],
+fillOpacity = 0.7,
+clusterOptions = markerClusterOptions(
+maxClusterRadius = 60,
+disableClusteringAtZoom = 12
+)
+)
+}
+m <- m %>%
+addLegend(
+"bottomright",
+pal = pal(cpaltemplates::palette_cpal_main),
+values = ~HUB,
+title = "HUB Eligibility",
+opacity = 0.7
+) %>%
+addLayersControl(
+overlayGroups = levels(vendors$HUB),
+position = "bottomleft",
+options = layersControlOptions(collapsed = FALSE)
+) %>%
+setMaxBounds(expanded_bounds[1], expanded_bounds[2], expanded_bounds[3], expanded_bounds[4])
+m <- leaflet(data = vendors) %>%
+addTiles(urlTemplate = cpaltemplates::cpal_mapbox, attribution = cpaltemplates::cpal_leaflet) %>%
+addPolygons(
+data = dallas_co,
+fillColor = "#333333",
+fillOpacity = 0.05, weight = 2, color = "#333333",
+smoothFactor = 1,
+options = pathOptions(clickable = F, interactive = F)
+)
+for(i in seq_along(levels(vendors$HUB))) {
+hub <- levels(vendors$HUB)[i]
+m <- m %>%
+addCircleMarkers(
+data = vendors %>% filter(HUB == hub),
+group = hub,
+radius = 5,
+stroke = FALSE,
+color = cpaltemplates::palette_cpal_main[i],
+fillOpacity = 0.7,
+clusterOptions = markerClusterOptions(
+maxClusterRadius = 60,
+disableClusteringAtZoom = 12
+)
+)
+}
+m <- m %>%
+addLegend(
+"bottomright",
+pal = ~colorFactor(cpaltemplates::palette_cpal_main, levels(vendors$HUB), na.color=NULL)(HUB),
+values = ~HUB,
+title = "HUB Eligibility",
+opacity = 0.7
+) %>%
+addLayersControl(
+overlayGroups = levels(vendors$HUB),
+position = "bottomleft",
+options = layersControlOptions(collapsed = FALSE)
+) %>%
+setMaxBounds(expanded_bounds[1], expanded_bounds[2], expanded_bounds[3], expanded_bounds[4])
+m <- leaflet(data = vendors) %>%
+addTiles(urlTemplate = cpaltemplates::cpal_mapbox, attribution = cpaltemplates::cpal_leaflet) %>%
+addPolygons(
+data = dallas_co,
+fillColor = "#333333",
+fillOpacity = 0.05, weight = 2, color = "#333333",
+smoothFactor = 1,
+options = pathOptions(clickable = F, interactive = F)
+)
+for(i in seq_along(levels(vendors$HUB))) {
+hub <- levels(vendors$HUB)[i]
+m <- m %>%
+addCircleMarkers(
+data = vendors %>% filter(HUB == hub),
+group = hub,
+radius = 5,
+stroke = FALSE,
+color = cpaltemplates::palette_cpal_main[i],
+fillOpacity = 0.7,
+clusterOptions = markerClusterOptions(
+maxClusterRadius = 60,
+disableClusteringAtZoom = 12
+)
+)
+}
+m <- m %>%
+addLegend(
+"bottomright",
+pal = colorFactor(cpaltemplates::palette_cpal_main, levels(vendors$HUB), na.color=NULL),
+values = ~HUB,
+title = "HUB Eligibility",
+opacity = 0.7
+) %>%
+addLayersControl(
+overlayGroups = levels(vendors$HUB),
+position = "bottomleft",
+options = layersControlOptions(collapsed = FALSE)
+) %>%
+setMaxBounds(expanded_bounds[1], expanded_bounds[2], expanded_bounds[3], expanded_bounds[4])
+m
+m <- leaflet(data = vendors) %>%
+addTiles(urlTemplate = cpaltemplates::cpal_mapbox, attribution = cpaltemplates::cpal_leaflet) %>%
+addPolygons(
+data = dallas_co,
+fillColor = "#333333",
+fillOpacity = 0.05, weight = 2, color = "#333333",
+smoothFactor = 1,
+options = pathOptions(clickable = F, interactive = F)
+)
+for(i in seq_along(levels(vendors$HUB))) {
+hub <- levels(vendors$HUB)[i]
+m <- m %>%
+addCircleMarkers(
+data = vendors %>% filter(HUB == hub),
+group = hub,
+radius = 5,
+stroke = FALSE,
+color = cpaltemplates::palette_cpal_main[i],
+fillOpacity = 0.7,
+clusterOptions = markerClusterOptions(
+maxClusterRadius = 60,
+disableClusteringAtZoom = 12
+)
+)
+}
+m <- m %>%
+addLegend(
+"bottomright",
+pal = colorFactor(cpaltemplates::palette_cpal_main, levels(vendors$HUB), na.color=NULL, ordered = TRUE),
+values = ~HUB,
+title = "HUB Eligibility",
+opacity = 0.7
+) %>%
+addLayersControl(
+overlayGroups = levels(vendors$HUB),
+position = "bottomleft",
+options = layersControlOptions(collapsed = FALSE)
+) %>%
+setMaxBounds(expanded_bounds[1], expanded_bounds[2], expanded_bounds[3], expanded_bounds[4])
+m
+cpaltemplates::palette_cpal_quintile
+cpaltemplates::palette_cpal_main
+map_palette <- c("#008097", "#ED683F", "#EACA2D", "#5C2B1C", "#ED018C", "#185411")
+m <- leaflet(data = vendors) %>%
+addTiles(urlTemplate = cpaltemplates::cpal_mapbox, attribution = cpaltemplates::cpal_leaflet) %>%
+addPolygons(
+data = dallas_co,
+fillColor = "#333333",
+fillOpacity = 0.05, weight = 2, color = "#333333",
+smoothFactor = 1,
+options = pathOptions(clickable = F, interactive = F)
+)
+for(i in seq_along(levels(vendors$HUB))) {
+hub <- levels(vendors$HUB)[i]
+m <- m %>%
+addCircleMarkers(
+data = vendors %>% filter(HUB == hub),
+group = hub,
+radius = 5,
+stroke = FALSE,
+color = map_palette[i],
+fillOpacity = 0.7,
+clusterOptions = markerClusterOptions(
+maxClusterRadius = 60,
+disableClusteringAtZoom = 12
+)
+)
+}
+m <- m %>%
+addLegend(
+"bottomright",
+pal = colorFactor(map_palette, levels(vendors$HUB), na.color=NULL, ordered = TRUE),
+values = ~HUB,
+title = "HUB Eligibility",
+opacity = 0.7
+) %>%
+addLayersControl(
+overlayGroups = levels(vendors$HUB),
+position = "bottomleft",
+options = layersControlOptions(collapsed = FALSE)
+) %>%
+setMaxBounds(expanded_bounds[1], expanded_bounds[2], expanded_bounds[3], expanded_bounds[4])
+m
+m <- leaflet(data = vendors) %>%
+addTiles(urlTemplate = cpaltemplates::cpal_mapbox, attribution = cpaltemplates::cpal_leaflet) %>%
+addPolygons(
+data = dallas_co,
+fillColor = "#333333",
+fillOpacity = 0.02, weight = 2, color = "#333333",
+smoothFactor = 1,
+options = pathOptions(clickable = F, interactive = F)
+)
+for(i in seq_along(levels(vendors$HUB))) {
+hub <- levels(vendors$HUB)[i]
+m <- m %>%
+addCircleMarkers(
+data = vendors %>% filter(HUB == hub),
+group = hub,
+radius = 5,
+stroke = FALSE,
+color = map_palette[i],
+fillOpacity = 0.7,
+clusterOptions = markerClusterOptions(
+maxClusterRadius = 60,
+disableClusteringAtZoom = 12
+)
+)
+}
+m <- m %>%
+addLegend(
+"bottomright",
+pal = colorFactor(map_palette, levels(vendors$HUB), na.color=NULL, ordered = TRUE),
+values = ~HUB,
+title = "HUB Eligibility",
+opacity = 0.7
+) %>%
+addLayersControl(
+overlayGroups = levels(vendors$HUB),
+position = "bottomleft",
+options = layersControlOptions(collapsed = FALSE)
+) %>%
+setMaxBounds(expanded_bounds[1], expanded_bounds[2], expanded_bounds[3], expanded_bounds[4])
+m
+m <- leaflet(data = vendors) %>%
+addTiles(urlTemplate = cpaltemplates::cpal_mapbox, attribution = cpaltemplates::cpal_leaflet) %>%
+addPolygons(
+data = dallas_co,
+fillColor = "#333333",
+fillOpacity = 0.03, weight = 2, color = "#333333",
+smoothFactor = 1,
+options = pathOptions(clickable = F, interactive = F)
+)
+for(i in seq_along(levels(vendors$HUB))) {
+hub <- levels(vendors$HUB)[i]
+m <- m %>%
+addCircleMarkers(
+data = vendors %>% filter(HUB == hub),
+group = hub,
+radius = 5,
+stroke = FALSE,
+color = map_palette[i],
+fillOpacity = 0.7,
+clusterOptions = markerClusterOptions(
+maxClusterRadius = 60,
+disableClusteringAtZoom = 12
+)
+)
+}
+m <- m %>%
+addLegend(
+"bottomright",
+pal = colorFactor(map_palette, levels(vendors$HUB), na.color=NULL, ordered = TRUE),
+values = ~HUB,
+title = "HUB Eligibility",
+opacity = 0.7
+) %>%
+addLayersControl(
+overlayGroups = levels(vendors$HUB),
+position = "bottomleft",
+options = layersControlOptions(collapsed = FALSE)
+) %>%
+setMaxBounds(expanded_bounds[1], expanded_bounds[2], expanded_bounds[3], expanded_bounds[4])
+m
+data <- read_csv("data/geocoded_vendors.csv") %>%
+filter(`HUB Status` == "Yes") %>%
+mutate(HUB = factor(
+case_when(
+`HUB Eligibility` == "BL" ~ "Black",
+`HUB Eligibility` == "AS" ~ "Asian",
+`HUB Eligibility` == "HI" ~ "Hispanic",
+`HUB Eligibility` == "AI" ~ "Native American",
+`HUB Eligibility` == "WO" ~ "Women Owned",
+`HUB Eligibility` == "DV" ~ "Disabled Veteran",
+TRUE ~ NA_character_
+),
+levels = c("Black", "Asian", "Hispanic", "Native American", "Women Owned", "Disabled Veteran")
+)) %>%
+sf::st_as_sf(coords = c("long", "lat")) %>%
+sf::st_set_crs(sf::st_crs(dallas_co)) %>%
+sf::st_join(dallas_co, sf::st_within) %>%
+filter(!is.na(GEOID))
+summary <- data %>%
+group_by(`Vendor ID`) %>% # Replace 'VendorID' with your unique vendor identifier column
+summarize(all_HUB = paste(unique(HUB), collapse = ", ")) %>%
+ungroup()
+View(summary)
+summary <- data %>%
+group_by(`Vendor ID`) %>% # Replace 'VendorID' with your unique vendor identifier column
+summarize(all_HUB = list(HUB)) %>%
+ungroup()
+View(summary)

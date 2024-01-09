@@ -1,0 +1,12 @@
+"0","leaflet(data = df) %>%
+  addProviderTiles(""CartoDB.Positron"") %>%
+  addPolygons(fillColor = ~colorQuantile(""viridis"", child_pov, n = 5)(child_pov),
+              fillOpacity = 0.7, weight = 1,
+              color = ""white"", dashArray = ""3"") %>%
+  addLegend(""bottomright"", pal = colorQuantile(""viridis"", df$child_pov, n = 5),
+            values = ~child_pov,
+            title = ""Child Poverty Rate"",
+            opacity = 1)
+"
+"2","Warning: sf layer has inconsistent datum (+proj=longlat +datum=NAD83 +no_defs).
+Need '+proj=longlat +datum=WGS84'"
