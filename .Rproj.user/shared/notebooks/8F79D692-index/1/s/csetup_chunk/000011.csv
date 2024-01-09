@@ -1,0 +1,44 @@
+"0","vendors <- read_csv(""data/geocoded_vendors.csv"") %>%
+  filter(`HUB Status` == ""Yes"") %>%
+  mutate(
+    long = jitter(long, amount = 0.0001),
+    lat = jitter(lat, amount = 0.0001),
+    HUB = factor(
+      case_when(
+        `HUB Eligibility` == ""BL"" ~ ""Black"",
+        `HUB Eligibility` == ""AS"" ~ ""Asian"",
+        `HUB Eligibility` == ""HI"" ~ ""Hispanic"",
+        `HUB Eligibility` == ""AI"" ~ ""Native American"",
+        `HUB Eligibility` == ""WO"" ~ ""Women Owned"",
+        `HUB Eligibility` == ""DV"" ~ ""Disabled Veteran"",
+        TRUE ~ NA_character_
+      ),
+      levels = c(""Black"", ""Asian"", ""Hispanic"", ""Native American"", ""Women Owned"", ""Disabled Veteran"")),
+    address = str_replace(address, "", USA$"", """"),
+    Phone = ifelse(is.na(Phone), 
+                   ""No phone number listed"",
+                   str_replace(Phone, 
+                               pattern = ""^(\\d{3})-(\\d{3})-(\\d{4})$"", 
+                               replacement = ""(\\1) \\2-\\3"")),
+    HUB_desc = case_when(
+      `HUB Eligibility` == ""BL"" ~ ""Listed as Black-Owned"",
+      `HUB Eligibility` == ""AS"" ~ ""Listed as Asian-Owned"",
+      `HUB Eligibility` == ""HI"" ~ ""Listed as Hispanic-Owned"",
+      `HUB Eligibility` == ""AI"" ~ ""Listed as Native American-Owned"",
+      `HUB Eligibility` == ""WO"" ~ ""Listed as Women-Owned"",
+      `HUB Eligibility` == ""DV"" ~ ""Listed as Owned by Service Disabled Veteran of 20% or More"",
+      TRUE ~ NA_character_)
+    ) %>% 
+  sf::st_as_sf(coords = c(""long"", ""lat"")) %>%
+  sf::st_set_crs(sf::st_crs(dallas_co)) %>%
+  sf::st_join(dallas_co, sf::st_within) %>%
+  filter(!is.na(GEOID))
+"
+"2","[1mRows: [22m[34m2046[39m [1mColumns: [22m[34m20[39m"
+"2","[36m──[39m [1mColumn specification[22m [36m───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m
+[1mDelimiter:[22m "",""
+[31mchr[39m (16): Company Name, Contact Person, Mailing Address, City, State, Zip, Country, Email, Phone, HUB Eligibility, HUB Gender, Small Business, CMBL...
+[32mdbl[39m  (4): Vendor ID, ZIP5, lat, long"
+"2","
+[36mℹ[39m Use `spec()` to retrieve the full column specification for this data.
+[36mℹ[39m Specify the column types or set `show_col_types = FALSE` to quiet this message."

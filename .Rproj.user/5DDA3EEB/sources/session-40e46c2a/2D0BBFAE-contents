@@ -29,6 +29,8 @@ dallas_co <- tigris::counties(state = "TX") %>%
 vendors <- read_csv("data/geocoded_vendors.csv") %>%
   filter(`HUB Status` == "Yes") %>%
   mutate(
+    long = jitter(long, amount = 0.0001),
+    lat = jitter(lat, amount = 0.0001),
     HUB = factor(
       case_when(
         `HUB Eligibility` == "BL" ~ "Black",
