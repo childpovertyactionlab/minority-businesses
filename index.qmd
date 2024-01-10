@@ -89,6 +89,11 @@ map_palette <- c("#008097", "#ED683F", "#EACA2D", "#5C2B1C", "#ED018C", "#185411
 
 ::: column-screen-inset
 
+```{=html}
+<div class="mainboxbox">
+<div class="mainbox">
+```
+
 :::: {.card}
 
 ```{=html}
@@ -237,6 +242,13 @@ function scrollToMap() {
     });
 }
 </script>
+
+```
+
+
+```{=html}
+</div>
+</div>
 
 ```
 
