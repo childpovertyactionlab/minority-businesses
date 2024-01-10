@@ -274,7 +274,7 @@ h3 {
 
 h4 {
     position: relative;
-    padding-left: 60px; /* Space for block and triangle. Adjust as needed. */
+    padding-left: 62px; /* Space for block and triangle. Adjust as needed. */
     background: none;
     color: $teal-900;
     padding-top: 0px;
@@ -467,26 +467,62 @@ h6 {
     color: $teal-900;
 }
 
-span, .bi {
-    line-height: 1; /* Example value, adjust as needed */
-    font-size: 16px; /* Ensure compatible font sizes */
-}
-
 .subtext {
   color: #c4c4c4;
   padding-left: 10px;
+  padding-bottom: 10px;
 }
 
-.dark-col{ 
+.rounded-outline {
+  display: inline-block; /* Makes the div inline */
+  /* width: 60px;  Set a fixed width */
+  font-size: 24px!important;
+  text-align: center; /* Center the text */
+  padding: 0px 5px; /* Some padding around the text */
+  font-weight: bold;
+}
+
+.dark-col { 
   background-color: $teal-900;
 }
 
-.dark-col h1{
+.dark-col h1 {
   color: white;
 }
 
 .card-side {
   padding: 10px;
+  margin-left: 10px;
+}
+
+.cardbox {
+  display: flex;
+  flex-direction: row;
+}
+
+.left-card-col {
+  width: 42%;
+  display: flex;
+}
+
+.right-card-col {
+  width: 58%;
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .cardbox {
+    flex-direction: column;
+  }
+  
+  .left-card-col {
+    width: 100%;
+    display: flex;
+  }
+  
+  .right-card-col {
+    width: 100%;
+  }
 }
 
 .mapscroll-container {

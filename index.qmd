@@ -29,8 +29,10 @@ dallas_co <- tigris::counties(state = "TX") %>%
 vendors <- read_csv("data/geocoded_vendors.csv") %>%
   filter(`HUB Status` == "Yes") %>%
   mutate(
-    long = jitter(long, amount = 0.0001),
-    lat = jitter(lat, amount = 0.0001),
+    jitter_cond = duplicated(lat) | duplicated(lat, fromLast = TRUE) | 
+                  duplicated(long) | duplicated(long, fromLast = TRUE),
+    long = ifelse(jitter_cond, jitter(long, amount = 0.0001), long),
+    lat = ifelse(jitter_cond, jitter(lat, amount = 0.0001), lat),
     HUB = factor(
       case_when(
         `HUB Eligibility` == "BL" ~ "Black",
@@ -71,14 +73,14 @@ expanded_bounds <- as.vector(c(
   ymax = bounds["ymax"] + 0.25
 ))
 
-count_vendor <- length(unique(vendors$`Vendor ID`))
+count_vendor <- scales::comma(length(unique(vendors$`Vendor ID`)))
 
-count_black <- nrow(vendors %>% filter(HUB == "Black"))
-count_asian <- nrow(vendors %>% filter(HUB == "Asian"))
-count_hispanic <- nrow(vendors %>% filter(HUB == "Hispanic"))
-count_native <- nrow(vendors %>% filter(HUB == "Native American"))
-count_women <- nrow(vendors %>% filter(HUB == "Women Owned"))
-count_veteran <- nrow(vendors %>% filter(HUB == "Disabled Veteran"))
+count_black <- scales::comma(nrow(vendors %>% filter(HUB == "Black")))
+count_asian <- scales::comma(nrow(vendors %>% filter(HUB == "Asian")))
+count_hispanic <- scales::comma(nrow(vendors %>% filter(HUB == "Hispanic")))
+count_native <- scales::comma(nrow(vendors %>% filter(HUB == "Native American")))
+count_women <- scales::comma(nrow(vendors %>% filter(HUB == "Women Owned")))
+count_veteran <- scales::comma(nrow(vendors %>% filter(HUB == "Disabled Veteran")))
 
 
 map_palette <- c("#008097", "#ED683F", "#EACA2D", "#5C2B1C", "#ED018C", "#185411")
@@ -89,52 +91,59 @@ map_palette <- c("#008097", "#ED683F", "#EACA2D", "#5C2B1C", "#ED018C", "#185411
 
 :::: {.card}
 
-::::: grid
-
 ```{=html}
-<div class="g-col-5 dark-col">
+<div class="cardbox">
+
+<div class="left-card-col dark-col">
 ```
 
 ```{=html}
-<div class="card-side">
+  <div class="card-side" style="width: 90%;">
 ```
 
 # There are `r count_vendor` unique minority-owned vendors in Dallas County
 
 ```{=html}
-<div class="subtext">
-according to the Texas Comptroller vendors list
-</div>
+    <div class="subtext">
+      &#8212; Texas Comptroller (2023)
+    </div>
+  </div>
 </div>
 ```
-
-::::::
-
-:::::: {.g-col-7}
 
 ```{=html}
-<div class="card-side">
-```
+<div class="right-card-col">
 
-####  **`r count_black`** listed as Black-owned
+  <div style="width: 3%">
+  </div>
 
-####   **`r count_asian`** listed as Asian-owned
+  <div class="card-side">
+    
+    <h4>
+      <div class="rounded-outline"><b>`r count_black`</b></div> listed as <span style="color: #008097;">Black-owned</span>
+    </h4>
+    <h4>
+      <div class="rounded-outline"><b>`r count_asian`</b></div> listed as <span style="color: #ED683F;">Asian-owned</span>
+    </h4>
+    <h4>
+      <div class="rounded-outline"><b>`r count_hispanic`</b></div> listed as <span style="color: #bd9e0b;">Hispanic-owned</span>
+    </h4>
+    <h4>
+      <div class="rounded-outline"><b>`r count_native`</b></div> listed as <span style="color: #5C2B1C;">Native American-owned</span>
+    </h4>
+    <h4>
+      <div class="rounded-outline"><b>`r count_women`</b></div> listed as <span style="color: #ED018C;">Women-owned</span>
+    </h4>
+    <h4>
+      <div class="rounded-outline"><b>`r count_veteran`</b></div> listed as owned by a <span style="color: #185411;">Service Disabled Veteran of 20% or more</span>
+    </h4>
 
-####  **`r count_hispanic`** listed as Hispanic-owned
-
-####  **`r count_native`** listed as Native American-owned
-
-####  **`r count_women`** listed as Women-owned
-
-####  **`r count_veteran`** listed as owned by a Service Disabled Veteran of 20% or more
-
-```{=html}
+  </div>
 </div>
+
+</div>
+
 ```
-
-::::::
-
-:::::
 
 ::::
 
@@ -150,7 +159,17 @@ according to the Texas Comptroller vendors list
 
 ```{r map}
 
-m <- leaflet(data = vendors, height = "90vh", width = "100%", elementId = "vendor-map") %>%
+m <- leaflet(data = vendors, 
+             height = "90vh", 
+             width = "100%", 
+             elementId = "vendor-map",
+             options = leafletOptions(
+               zoomSnap = 0.5,
+               zoomDelta = 0.5,
+               minZoom = 9.5,
+               wheelPxPerZoomLevel = 90
+               )
+             ) %>%
   addTiles(urlTemplate = cpaltemplates::cpal_mapbox, attribution = cpaltemplates::cpal_leaflet) %>%
   addPolygons(
     data = dallas_co,
@@ -187,7 +206,7 @@ for(i in seq_along(levels(vendors$HUB))) {
 
 m <- m %>%
   addLegend(
-    "bottomright",
+    "topright",
     pal = colorFactor(map_palette, levels(vendors$HUB), na.color=NULL, ordered = TRUE),
     values = ~HUB,
     title = "HUB Eligibility",
@@ -195,7 +214,7 @@ m <- m %>%
   ) %>%
   addLayersControl(
     overlayGroups = levels(vendors$HUB),
-    position = "bottomleft",
+    position = "topleft",
     options = layersControlOptions(collapsed = FALSE)
   ) %>%
   setMaxBounds(expanded_bounds[1], expanded_bounds[2], expanded_bounds[3], expanded_bounds[4])
@@ -220,3 +239,5 @@ function scrollToMap() {
 </script>
 
 ```
+
+:::
