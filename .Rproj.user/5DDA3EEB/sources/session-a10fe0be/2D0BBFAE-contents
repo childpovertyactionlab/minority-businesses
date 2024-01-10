@@ -103,7 +103,7 @@ map_palette <- c("#008097", "#ED683F", "#EACA2D", "#5C2B1C", "#ED018C", "#185411
 ```
 
 ```{=html}
-  <div class="card-side" style="width: 90%;">
+  <div class="card-side" style="width: 94%;">
 ```
 
 # There are `r count_vendor` unique minority-owned vendors in Dallas County
