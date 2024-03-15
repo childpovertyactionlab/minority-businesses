@@ -27,7 +27,7 @@ format:
     echo: FALSE
     message: FALSE
 website:
-  title: "Minority Businesses"
+  title: "Example Map Microsite"
   search:
     location: navbar
     type: textbox
@@ -51,7 +51,7 @@ website:
               href: index.html
             - icon: github
               text: "Github"
-              href: "https://github.com/childpovertyactionlab/minority-businesses"
+              href: "https://github.com/childpovertyactionlab/example-map-microsite"
   page-footer:
     center: Copyright 2023 <b>[The Child Poverty Action Lab](https://childpovertyactionlab.org/).</b>
     background: "#042D33"

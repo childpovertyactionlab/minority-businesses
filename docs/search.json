@@ -1,9 +1,9 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "There are 1,440 unique minority-owned vendors in Dallas County",
+    "objectID": "index_copy.html",
+    "href": "index_copy.html",
+    "title": "Welcome to this map",
     "section": "",
-    "text": "There are 1,440 unique minority-owned vendors in Dallas County\n    \n      — Texas Comptroller (2023)\n    \n  \n\n\n\n  \n  \n\n  \n    \n    \n      545 listed as Black-owned\n    \n    \n      238 listed as Asian-owned\n    \n    \n      274 listed as Hispanic-owned\n    \n    \n      23 listed as Native American-owned\n    \n    \n      349 listed as Women-owned\n    \n    \n      11 listed as owned by a Service Disabled Veteran of 20% or more\n    \n\n  \n\n\n\n\n\n\n\n\n  \n      Click for map"
+    "text": "::: {.card-side, style = “width: 94%;”}\n\nWelcome to this map\n\nSubtext\n\n\n\n\n\n::: {style = “width: 3%”}\n\n\n\nContent\n\n\n\n\n\n\n  \n      Click for map \n  \n\n\n\n\nError: 'cpal_mapbox' is not an exported object from 'namespace:cpaltemplates'\n\n\nError in eval(expr, envir, enclos): object 'm' not found\n\n\n```{=html javascript}\n\n```\n:::\n:::\n:::"
   }
 ]

@@ -172,7 +172,7 @@ m <- leaflet(data = vendors,
                zoomSnap = 0.5,
                zoomDelta = 0.5,
                minZoom = 9.5,
-               wheelPxPerZoomLevel = 90
+               wheelPxPerZoomLevel = 120
                )
              ) %>%
   addTiles(urlTemplate = cpaltemplates::cpal_mapbox, attribution = cpaltemplates::cpal_leaflet) %>%

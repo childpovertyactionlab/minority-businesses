@@ -1,0 +1,126 @@
+---
+pagetitle: "Example Map Template"
+format: html
+---
+
+```{r setup, output = F, echo = F}
+
+library(tidycensus)
+library(sf)
+require(tidyverse)
+library(leaflet)
+
+dallas_co <- tigris::counties(state = "TX") %>%
+  filter(NAME == "Dallas")
+
+```
+
+::: column-screen-inset
+
+::: mainboxbox
+
+::: mainbox
+
+:::: card
+
+::: cardbox
+
+::: {.left-card-col .dark-col}
+
+::: {.card-side, style = "width: 94%;"}
+
+# Welcome to this map
+
+::: subtext
+
+Subtext
+
+:::
+
+:::
+
+:::
+
+::: right-card-col
+
+::: {style = "width: 3%"}
+:::
+
+:::
+
+::: card-side
+
+#### Content
+
+:::
+
+:::
+
+:::
+
+::::
+
+::: mapscroll-container
+
+```{=html}
+
+  <a href="javascript:void(0);" class="scroll-link" onclick="scrollToMap()">
+      Click for map <i class="bi bi-chevron-down"></i>
+  </a>
+
+```
+
+:::
+
+
+```{r map}
+
+m <- leaflet(data = dallas_co, 
+             height = "90vh", 
+             width = "100%", 
+             elementId = "map",
+             options = leafletOptions(
+               zoomSnap = 0.5,
+               zoomDelta = 0.5,
+               minZoom = 9.5,
+               wheelPxPerZoomLevel = 120
+               )
+             ) %>%
+  addTiles(urlTemplate = cpaltemplates::cpal_mapbox, attribution = cpaltemplates::cpal_leaflet) %>%
+  addPolygons(
+    data = dallas_co,
+    fillColor = "#333333",
+    fillOpacity = 0.03, weight = 2, color = "#333333",
+    smoothFactor = 1,
+    options = pathOptions(clickable = F, interactive = F)
+  ) %>%
+  setMaxBounds(expanded_bounds[1], expanded_bounds[2], expanded_bounds[3], expanded_bounds[4])
+
+m
+
+```
+
+
+```{=html javascript}
+
+<script>
+function scrollToMap() {
+    const element = document.getElementById('map');
+    const headerOffset = 70; // height of your fixed header
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+    window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+    });
+}
+</script>
+
+```
+
+:::
+
+:::
+
+:::
